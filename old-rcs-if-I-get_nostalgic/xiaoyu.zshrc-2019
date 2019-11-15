@@ -1,0 +1,158 @@
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/xiaoyu/.oh-my-zsh
+# saves to ussh everytime.
+# export GIT_SSH=ussh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+#ZSH_THEME="kardan"
+# kill all the processes. 
+#kill `ps aux | grep celery | awk '{print [}'`]
+
+alias ghelp="less ~/.oh-my-zsh/plugins/git/git.plugin.zsh"
+# all my git related shortcuts are actually in the above git.plugin.zsh
+#alias gs="git status"
+#alias gca="git commit -a "
+#alias gb="git branch"
+#alias gcb="git checkout -b "
+alias uhome1="cd /Users/xiaoyu/Uber/sync/astonmartin-accord-2.dev.uber.com/home/uber"
+alias uhome="cd /Users/xiaoyu/Uber/sync/xiaoyu2.dev.uber.com/home/uber"
+alias xhome="/Users/xiaoyu/dev/baozi/BrainExercise/python"
+alias ghome="/Users/xiaoyu/gocode/src/code.uber.internal/u4b"
+# find . -name "*.unison.tmp" -type f, this deletes all files followed pattern, find first then -delete
+alias adhoc="echo adhoc04-sjc1, adhoc03-sjc1, appdocker189-pek1, adhoc01-pek1, adhoc12-sjc1"
+# find file names matching the pattern
+alias xfind="find . -name "
+# grep --include=\*.{c,h} -rnw '/path/to/somewhere/' -e "pattern"
+# grep --exclude=*.o -rnw '/path/to/somewhere/' -e "pattern"
+alias utasks="arc tasks --order created"
+alias xgrep="grep --color=auto -rnw * -e " 
+# Go stuff from engucation
+export GOPATH="$HOME/gocode"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:/usr/local/mysql/bin"
+export PATH="$PATH:/usr/bin/python"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+# User configuration
+
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/Users/xiaoyu/.nvm/v0.10.32/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/xiaoyu/bin"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# added by newengsetup
+export EDITOR=vim
+export UBER_HOME="$HOME/Uber"
+export UBER_OWNER="xiaoyu@uber.com"
+export UBER_LDAP_UID="xiaoyu"
+export VAGRANT_DEFAULT_PROVIDER=aws
+
+path+=(/Users/xiaoyu/bin)
+
+[ -s "/usr/local/bin/virtualenvwrapper.sh" ] && . /usr/local/bin/virtualenvwrapper.sh
+[ -s "$HOME/.nvm/nvm.sh" ] && . $HOME/.nvm/nvm.sh
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+_sync_dir () {
+    cmd=$1
+    shift
+    new_directory=$(boxer sync_dir $@)
+    if [ "$?" -eq "0" ]; then
+        $cmd $new_directory
+    else
+        echo "$new_directory"
+    fi
+}
+cdsync () {
+    _sync_dir cd $@
+}
+editsync () {
+    _sync_dir $EDITOR $@
+}
+opensync () {
+    _sync_dir open @
+}
+
+cn () { CN_PATH="$(/Users/xiaoyu/.nvm/versions/node/v6.11.1/lib/node_modules/@uber/change-node/change-node run $@)" && PATH="${CN_PATH:-$PATH}"; } # change-node t.uber.com/change-node
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/xiaoyu/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/xiaoyu/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/xiaoyu/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/xiaoyu/google-cloud-sdk/completion.zsh.inc'; fi
+brew analytics off 2>&1 >/dev/null
+brew analytics off 2>&1 >/dev/null
+export PATH="/usr/local/opt/openssl/bin:$PATH"

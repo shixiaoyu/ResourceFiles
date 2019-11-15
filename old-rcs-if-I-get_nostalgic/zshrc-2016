@@ -1,0 +1,80 @@
+export PATH=$PATH:/Users/xiaoyushi/android-sdks/platform-tools
+export PATH=$PATH:/Users/xiaoyushi/android-sdks/tools
+export PATH=$PATH:/Users/xiaoyushi/gradle/bin
+export PATH=$PATH:/Users/xiaoyushi/scala-2.11.7/bin
+export GOPATH=/Users/xiaoyushi/go
+export MYSQL_HOME=/usr/local/mysql-5.6.21-osx10.8-x86_64
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$MYSQL_HOME/bin
+export PATH=$PATH:/Users/xiaoyushi/.vim/bundle/node
+export PATH=$PATH:/Users/xiaoyushi/Downloads/pkg-config-0.29
+export PKG_CONFIG=/Users/xiaoyushi/Downloads/pkg-config-0.29
+export PATH=$PATH:/Users/xiaoyushi/Downloads/glew-1.13.0
+
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias l="ls -FG"
+alias ls="ls -FG"
+alias vi="vim"
+alias ll="ls -al"
+alias grep='nocorrect grep --color=auto'
+alias eclipse='/Users/xiaoyushi/eclipse/./eclipse &'
+alias judge='cd /Users/xiaoyushi/go/src/github.com/shixiaoyu/jeffreysjudge'
+# Git related command. 
+alias gs='git status'
+alias gc='git commit'
+alias gb='git branch'
+
+#mysql alias
+alias mysqlstart="sudo /Library/StartupItems/MySQLCOM/MySQLCOM start"
+alias mysqlstop="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
+alias mysqlstatus="ps aux | grep mysql | grep -v grep"
+
+autoload colors
+colors
+#setup zsh to auto complete the cmd
+autoload -Uz compinit
+compinit
+#http://my.opera.com/blackbelt_jones/blog/2007/06/05/zsh-prompt-configuration-issue-solved
+PROMPT='%%' # prompt for right side of screen
+RPROMPT='%d%>:%{\e[0m%}' # default prompt
+#keep history file between sessions
+HISTSIZE=1000
+SAVEHIST=1000
+HISFILE=~/.history
+setopt APPEND_HISTORY
+setopt AUTO_CD
+setopt CORRECT
+setopt AUTO_LIST
+#allow tab completion in the middle of a word
+setopt COMPLETE_IN_WORD
+#tab completion moves to end of word
+setopt ALWAYS_TO_END
+setopt listtypes 
+setopt MENU_COMPLETE
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' original true
+zstyle ':completion:*' prompt 'correction: %e '
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' substitute 1
+
+
+autoload -U compinit
+compinit
+
+# End of lines added by compinstall
+
+autoload -U colors
+colors

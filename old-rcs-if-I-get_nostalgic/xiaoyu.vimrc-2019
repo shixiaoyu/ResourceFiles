@@ -1,0 +1,21 @@
+set runtimepath+=~/.vim_runtime
+https://github.com/amix/vimrc.   -> install the awesome vim runtime here
+
+set number
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+let g:jedi#auto_initialization = 1
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
+
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
