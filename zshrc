@@ -28,7 +28,7 @@ alias subl="open -a /Applications/Sublime\ Text.app"
 
 # this enables the batch rename
 autoload zmv
-source "/User/xiaoyu/env.sh" 
+source "/Users/xiaoyu/env.sh" 
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
