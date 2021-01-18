@@ -3,6 +3,7 @@
 " 
 " 1. really the the vim_rumtime, install it here: https://github.com/amix/vimrc, check the "install plugin" section 
 "   1.1 I really like NerdTree, which is previously installec by vimrc runtime 
+"   1.2 after install vimrc, copy this file to overwrite
 " 2. Pick some from https://vimawesome.com/, youcompleteme is useful
 " ######### REAME END ##########
 
